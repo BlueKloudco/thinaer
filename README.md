@@ -20,7 +20,7 @@ The Primary Advertising Packet or PAP hold the most critical information, allowi
 The example below will show our test company building two beacons using the company ID then the beacon ID incremented.
 
 
-_Example Company Identification from Bluetooth SIG: 0x1234_
+__Example Company Identification from Bluetooth SIG: 0x1234__
 
 Beacon | Format
 --- | ---
@@ -57,7 +57,7 @@ A stop byte is used to signal that data has ended. A stop byte is required after
 In this example we will be sending temperature and a boolean from the same beacons we created earlier in the “Primary Advertising Packet” section.
 
 
-_Example Company Identification from Bluetooth SIG: 0x1234_
+__Example Company Identification from Bluetooth SIG: 0x1234__
 
 Beacon | Format
 --- | ---

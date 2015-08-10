@@ -14,13 +14,13 @@ The Advertising packet consists of three sections of data: Company Identifier, B
 ----
 
 # Primary advertising packet
-The Primary Advertising Packet or PAP hold the most critical information, allowing you to identify the company the beacon is from and the beacon itself. This packet is a total of ten bytes starting with the first two bytes as the company ID. The company ID should be obtained from the Bluetooth Special Interest Group (Bluetooth SIG). They will provide you with a two byte long company identification that can be used in most every other specification. After the company ID, comes the beacon ID which is an eight bytes long and should increment starting from zero per company ID.
+The Primary Advertising Packet or PAP hold the most critical information, allowing you to identify the company the beacon is from and the beacon itself. This packet is a total of ten bytes starting with the first two bytes as the company ID. The company ID should be obtained from the [Bluetooth Special Interest Group (Bluetooth SIG)](https://www.bluetooth.org/en-us/specification/assigned-numbers/company-identifiers). They will provide you with a two byte long company identification that can be used in most every other specification. After the company ID, comes the beacon ID which is an eight bytes long and should increment starting from zero per company ID.
 
 #### Example
 The example below will show our test company building two beacons using the company ID then the beacon ID incremented.
 
 
-__Example Company Identification from Bluetooth SIG: 0x1234__
+__Example Company Identification from [Bluetooth SIG](https://www.bluetooth.org/en-us/specification/assigned-numbers/company-identifiers): 0x1234__
 
 Beacon | Format
 --- | ---
@@ -57,7 +57,7 @@ A stop byte is used to signal that data has ended. A stop byte is required after
 In this example we will be sending temperature and a boolean from the same beacons we created earlier in the “Primary Advertising Packet” section.
 
 
-__Example Company Identification from Bluetooth SIG: 0x1234__
+__Example Company Identification from [Bluetooth SIG](https://www.bluetooth.org/en-us/specification/assigned-numbers/company-identifiers): 0x1234__
 
 Beacon | Format
 --- | ---

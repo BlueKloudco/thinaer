@@ -9,7 +9,7 @@ The purpose of creating this specification overcome the constraints current iBea
 ### Advertising Packet
 The Advertising packet consists of three sections of data: Company Identifier, Beacon Identifier and Options Hash.
 
-<p style="text-align:center;"> ![packet_format] </p>
+![packet_format]
 
 ----
 
@@ -33,7 +33,7 @@ ThinAër’s option bytes have been modeled after the Key-Value Store concept co
 
 ThinAër’s option bytes are an extremely easy to use and flexible option to the specification for sending data over the advertising package. Options can be in any order and can change positions within the options data set itself. Option bytes are predefined in this specification and can be added with a request to the authors.
 
-<p style="text-align:center;"> ![options_format] </p>
+![options_format]
 
 ## Predefined option bytes
 These predefined byte keys are used in the Option byte section of the advertising package. You may use your own option keys on the fly but it may clash with other ThinAër beacon users. You may request new option keys by contacting us with the option key you would like to use.

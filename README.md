@@ -50,11 +50,13 @@ Option Hex | Description
 ## Stop byte
 A stop byte is used to signal that data has ended. A stop byte is required after each piece of data to show that we are moving on to a new predefined byte or we are done. The peripheral will be looking for the predefined option “start” byte then the data byte(s), then finally the stop byte.
 
-0xFF | Sop byte.
+Byte | Description
+--- | ---
+0xFF | Stop byte.
 
 
 #### Example
-In this example we will be sending temperature and a boolean from the same beacons we created earlier in the “Primary Advertising Packet” section.
+In this example we will be sending temperature and a boolean from the same beacons we created earlier in the “[Primary Advertising Packet](https://github.com/Kloudnation/thinaer#primary-advertising-packet)” section.
 
 
 __Example Company Identification from [Bluetooth SIG](https://www.bluetooth.org/en-us/specification/assigned-numbers/company-identifiers): 0x1234__

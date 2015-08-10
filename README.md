@@ -9,9 +9,7 @@ The purpose of creating this specification overcome the constraints current iBea
 ### Advertising Packet
 The Advertising packet consists of three sections of data: Company Identifier, Beacon Identifier and Options Hash.
 
-<div style="text-align:center">
-	<img src="https://raw.githubusercontent.com/Kloudnation/thinaer/master/figures/packet_format.png" alt="packet format">
-</div>
+![packet_format]
 
 ----
 
@@ -22,9 +20,10 @@ The Primary Advertising Packet or PAP hold the most critical information, allowi
 The example below will show our test company building two beacons using the company ID then the beacon ID incremented.
 
 
-*Example Company Identification from Bluetooth SIG: 0x1234*
+_Example Company Identification from Bluetooth SIG: 0x1234_
 
-
+Beacon | Format
+--- | ---
 Beacon 1 | 0x1234, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 Beacon 2 | 0x1234, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01
 
@@ -35,13 +34,13 @@ ThinAër’s option bytes have been modeled after the Key-Value Store concept co
 
 ThinAër’s option bytes are an extremely easy to use and flexible option to the specification for sending data over the advertising package. Options can be in any order and can change positions within the options data set itself. Option bytes are predefined in this specification and can be added with a request to the authors.
 
-<div style="text-align:center">
-	<img src="https://raw.githubusercontent.com/Kloudnation/thinaer/master/figures/options_format.png" alt="options format">
-</div>
+![options_format]
 
 ## Predefined option bytes
 These predefined byte keys are used in the Option byte section of the advertising package. You may use your own option keys on the fly but it may clash with other ThinAër beacon users. You may request new option keys by contacting us with the option key you would like to use.
 
+Option Hex | Description
+--- | ---
 0x01 | Battery (percent left) reading from power source.
 0x02 | Temperature reading from primary chipset.
 0x03 | Temperature reading from a secondary source external to the primary chipset.
@@ -58,8 +57,10 @@ A stop byte is used to signal that data has ended. A stop byte is required after
 In this example we will be sending temperature and a boolean from the same beacons we created earlier in the “Primary Advertising Packet” section.
 
 
-*Example Company Identification from Bluetooth SIG: 0x1234*
+_Example Company Identification from Bluetooth SIG: 0x1234_
 
+Beacon | Format
+--- | ---
 Beacon 1 | 0x1234, [...8 byte beacon ID...], 0x02, 0x4A, 0xFF, 0x05, 0x00, 0xFF
 Beacon 2 | 0x1234, [...8 byte beacon ID...], 0x05, 0x01, 0xFF, 0x02, 0x4A, 0xFF
 

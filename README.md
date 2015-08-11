@@ -1,3 +1,5 @@
+![logo_banner]
+
 # ThinAër Protocol Specification
 ThinAër is a protocol specification that defines a Bluetooth low energy (BLE) message format for proximity beacon messages. ThinAër proximity beacon advertisements are transmitted by devices for the purpose of signaling their proximity to nearby receivers. The contents of the emitted message contain information that the receiving device can use to identify the beacon and to compute its relative distance to the beacon. The receiving device may use this information as a contextual trigger to execute procedures and implement behaviors that are relevant to being in proximity to the transmitting beacon.
 
@@ -7,7 +9,7 @@ The purpose of creating this specification overcome the constraints current iBea
 
 
 ### Advertising Packet
-The Advertising packet consists of three sections of data: Company Identifier, Beacon Identifier and Option Bytes. The first two sections — Company Identifier and Beacon Identifier — are required and of a fixed byte position and length. The third section — the Option Bytes — is optional, of variable length and consists of one or more Key-Value pairs representing specific service data, each separated by a Stop Byte. 
+The Advertising packet consists of three sections of data: Company Identifier, Beacon Identifier and Option Bytes. The first two sections — Company Identifier and Beacon Identifier — are required and of a fixed byte position and length. The third section — the Option Bytes — is optional, of variable length and consists of one or more Key-Value pairs representing specific service data, each separated by a Stop Byte.
 
 ![packet_format]
 
@@ -33,6 +35,8 @@ ThinAër’s option bytes have been modeled after the Key-Value Store concept co
 
 
 ThinAër’s option bytes are an extremely easy to use and flexible option to the specification for sending data over the advertising package. Options can be in any order and can change positions within the options data set itself. Option bytes are predefined in this specification and can be added with a request to the authors.
+
+> A key-value pair (KVP) is a set of two linked data items: a key, which is a unique identifier for some item of data, and the value, which is either the data that is identified or a pointer to the location of that data. Key-value pairs are frequently used in lookup tables, hash tables and configuration files.
 
 ![options_format]
 
@@ -73,5 +77,6 @@ Beacon 1 | 0x1234, [...8 byte beacon ID...], 0x02, 0x4A, 0xFF, 0x05, 0x00, 0xFF
 Beacon 2 | 0x1234, [...8 byte beacon ID...], 0x05, 0x01, 0xFF, 0x02, 0x4A, 0xFF
 
 
+[logo_banner]: https://raw.githubusercontent.com/Kloudnation/thinaer/master/images/ThinAer-banner725wide.png "logo_banner"
 [packet_format]: https://raw.githubusercontent.com/Kloudnation/thinaer/master/figures/packet_format.png "packet format"
 [options_format]: https://raw.githubusercontent.com/Kloudnation/thinaer/master/figures/options_format.png "options format"

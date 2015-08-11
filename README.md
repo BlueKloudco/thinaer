@@ -1,3 +1,5 @@
+![logo_banner]
+
 # ThinAër Protocol Specification
 ThinAër is a protocol specification that defines a Bluetooth low energy (BLE) message format for proximity beacon messages. ThinAër proximity beacon advertisements are transmitted by devices for the purpose of signaling their proximity to nearby receivers. The contents of the emitted message contain information that the receiving device can use to identify the beacon and to compute its relative distance to the beacon. The receiving device may use this information as a contextual trigger to execute procedures and implement behaviors that are relevant to being in proximity to the transmitting beacon.
 
@@ -7,7 +9,7 @@ The purpose of creating this specification overcome the constraints current iBea
 
 
 ### Advertising Packet
-The Advertising packet consists of three sections of data: Company Identifier, Beacon Identifier and Option Bytes. The first two sections — Company Identifier and Beacon Identifier — are required and of a fixed byte position and length. The third section — the Option Bytes — is optional, of variable length and consists of one or more Key-Value pairs representing specific service data, each separated by a Stop Byte. 
+The Advertising packet consists of three sections of data: Company Identifier, Beacon Identifier and Option Bytes. The first two sections — Company Identifier and Beacon Identifier — are required and of a fixed byte position and length. The third section — the Option Bytes — is optional, of variable length and consists of one or more Key-Value pairs representing specific service data, each separated by a Stop Byte.
 
 ![packet_format]
 
@@ -75,5 +77,6 @@ Beacon 1 | 0x1234, [...8 byte beacon ID...], 0x02, 0x4A, 0xFF, 0x05, 0x00, 0xFF
 Beacon 2 | 0x1234, [...8 byte beacon ID...], 0x05, 0x01, 0xFF, 0x02, 0x4A, 0xFF
 
 
+[logo_banner]: https://raw.githubusercontent.com/Kloudnation/thinaer/master/images/ThinAer-banner725wide.png "logo_banner"
 [packet_format]: https://raw.githubusercontent.com/Kloudnation/thinaer/master/figures/packet_format.png "packet format"
 [options_format]: https://raw.githubusercontent.com/Kloudnation/thinaer/master/figures/options_format.png "options format"

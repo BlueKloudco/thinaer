@@ -36,7 +36,7 @@ ThinAër’s option bytes are an extremely easy to use and flexible option to th
 
 ![options_format]
 
-## Predefined option bytes
+## Predefined bytes
 These predefined byte keys are used in the Option byte section of the advertising package. You may use your own option keys on the fly but it may clash with other ThinAër beacon users. You may request new option keys by contacting us with the option key you would like to use.
 
 Option Hex | Description
@@ -46,6 +46,12 @@ Option Hex | Description
 0x03 | Temperature reading from a secondary source external to the primary chipset.
 0x04 | Humidity reading from a secondary source external to the primary chipset.
 0x05 | Boolean
+
+
+## Value Byte(s)
+Value bytes are the value of the predefined bytes and can use more than one hex value. An example of this would be using the predefined byte of `0x01` signaling to the peripheral device that it will receive the battery reading. The value byte could be `0x51`, which translates to "81%". The value byte(s) should be split into hex values and sent only after a predefined byte (key byte). To signal the end of the data a stop byte is required at the end as described below.
+
+
 
 ## Stop byte
 A stop byte is used to signal that data has ended. A stop byte is required after each piece of data to show that we are moving on to a new predefined byte or we are done. The peripheral will be looking for the predefined option “start” byte then the data byte(s), then finally the stop byte.

@@ -7,7 +7,7 @@ The purpose of creating this specification overcome the constraints current iBea
 
 
 ### Advertising Packet
-The Advertising packet consists of three sections of data: Company Identifier, Beacon Identifier and Options Hash.
+The Advertising packet consists of three sections of data: Company Identifier, Beacon Identifier and Options Bytes. The first two sections -- Company Identifier and Beacon Identifier -- are of a fixed byte position and length. The third section -- the Options Bytes -- is optional, of variable length and consists of one or more Key-Value pairs, each seperated by a Stop Byte. 
 
 ![packet_format]
 

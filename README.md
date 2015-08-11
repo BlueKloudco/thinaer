@@ -34,6 +34,8 @@ ThinAër’s option bytes have been modeled after the Key-Value Store concept co
 
 ThinAër’s option bytes are an extremely easy to use and flexible option to the specification for sending data over the advertising package. Options can be in any order and can change positions within the options data set itself. Option bytes are predefined in this specification and can be added with a request to the authors.
 
+> A key-value pair (KVP) is a set of two linked data items: a key, which is a unique identifier for some item of data, and the value, which is either the data that is identified or a pointer to the location of that data. Key-value pairs are frequently used in lookup tables, hash tables and configuration files.
+
 ![options_format]
 
 ## Predefined bytes

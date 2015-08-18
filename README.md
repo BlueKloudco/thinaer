@@ -9,7 +9,8 @@ The purpose of creating this specification is to overcome the constraints from t
 
 
 ### Advertising Packet
-The Advertising packet consists of four sections of data: BlueKloud Identifier, Company Identifier, Beacon Identifier and Option Bytes. The first three sections — BlueKloud Identifier, Company Identifier and Beacon Identifier — are required and of a fixed byte position and length. The fourth section — the Option Bytes — is optional, of variable length and consists of one or more Key-Value pairs representing specific service data, each separated by a Stop Byte.
+The Advertising packet consists of four sections of data: BlueKloud Identifier, Company Identifier, Beacon Identifier and Option Bytes. The first three sections — BlueKloud Identifier `0x01F0`, Company Identifier and Beacon Identifier — are required and of a fixed byte position and length. The fourth section — the Option Bytes — is optional, of variable length and consists of one or more Key-Value pairs representing specific service data, each separated by a Stop Byte.
+
 
 ![packet_format]
 
@@ -17,6 +18,7 @@ The Advertising packet consists of four sections of data: BlueKloud Identifier, 
 
 # Primary advertising packet
 The Primary Advertising Packet or PAP hold the most critical information, allowing you to identify the company/customer the beacon is from and the beacon itself. This packet is a total of twelve bytes starting with the first two bytes as the BlueKloud Identifier. This allows for quick identification of ThinAër beacons without having to parse the remainder of the primary advertising paacket.  The next two bytes are the company/customer ID.   The company ID should be obtained from the [Bluetooth Special Interest Group (Bluetooth SIG)](https://www.bluetooth.org/en-us/specification/assigned-numbers/company-identifiers). They will provide you with a two byte long company identification that can be used in most every other specification. After the company ID, comes the beacon ID which is an eight bytes long and should increment starting from zero per company ID.
+
 
 #### Example
 The example below will show our test company building two beacons using the company ID then the beacon ID incremented.
@@ -26,8 +28,8 @@ __Example Company Identification from [Bluetooth SIG](https://www.bluetooth.org/
 
 Beacon | Format
 --- | ---
-Beacon 1 | 0xF001, 0x1234, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-Beacon 2 | 0xF001, 0x1234, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01
+1 | `0x01F0, 0x1234, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00`
+2 | `0x01F0, 0x1234, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01`
 
 
 # Option Bytes
@@ -45,11 +47,11 @@ These predefined byte keys are used in the Option byte section of the advertisin
 
 Option Hex | Description
 --- | ---
-0x01 | Battery (percent left) reading from power source.
-0x02 | Temperature reading from primary chipset.
-0x03 | Temperature reading from a secondary source external to the primary chipset.
-0x04 | Humidity reading from a secondary source external to the primary chipset.
-0x05 | Boolean
+`0x01` | Battery (percent left) reading from power source.
+`0x02` | Temperature reading from primary chipset.
+`0x03` | Temperature reading from a secondary source external to the primary chipset.
+`0x04` | Humidity reading from a secondary source external to the primary chipset.
+`0x05` | Boolean
 
 
 ## Value Byte(s)
@@ -62,7 +64,7 @@ A stop byte is used to signal that data has ended. A stop byte is required after
 
 Byte | Description
 --- | ---
-0xFF | Stop byte.
+`0xFF` | Stop byte.
 
 
 #### Example
@@ -73,8 +75,9 @@ __Example Company Identification from [Bluetooth SIG](https://www.bluetooth.org/
 
 Beacon | Format
 --- | ---
-Beacon 1 | 0xF001, 0x1234, [...8 byte beacon ID...], 0x02, 0x4A, 0xFF, 0x05, 0x00, 0xFF
-Beacon 2 | 0xF001, 0x1234, [...8 byte beacon ID...], 0x05, 0x01, 0xFF, 0x02, 0x4A, 0xFF
+1 | `0x01F0, 0x1234, [8 byte beacon ID], 0x02, 0x4A, 0xFF, 0x05, 0x00, 0xFF`
+2 | `0x01F0, 0x1234, [8 byte beacon ID], 0x05, 0x01, 0xFF, 0x02, 0x4A, 0xFF`
+
 
 
 [logo_banner]: https://raw.githubusercontent.com/Kloudnation/thinaer/master/images/ThinAer-banner725wide.png "logo_banner"

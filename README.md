@@ -5,18 +5,20 @@ ThinAër is a protocol specification that defines a Bluetooth low energy (BLE) m
 
 
 ## What is the purpose?
-The purpose of creating this specification overcome the constraints current iBeacon specification from Apple Inc. ThinAër has reduced the size of the overall package to only a required 12 bytes, consisting of the ThinAër identifier, company identifier and beacon identification. This specification and initial package size offers 4,294,967,296 unique beacon identifications per company identifier.
+The purpose of creating this specification is to overcome the constraints from the current iBeacon specification from Apple Inc. ThinAër has reduced the size of the overall package to only a required 12 bytes, consisting of the bluekloud identifier, a company/customer identifier and beacon identifier. This specification and initial package size offers 4,294,967,296 unique beacon identifications per company/customer identifier.
 
 
 ### Advertising Packet
-The Advertising packet consists of four sections of data: ThinAër Identifier, Company Identifier, Beacon Identifier and Option Bytes. The first three sections — ThinAër Identifier `0x01F0` — Company Identifier and Beacon Identifier — are required and of a fixed byte position and length. The fourth section — the Option Bytes — is optional, of variable length and consists of one or more Key-Value pairs representing specific service data, each separated by a Stop Byte.
+The Advertising packet consists of four sections of data: BlueKloud Identifier, Company Identifier, Beacon Identifier and Option Bytes. The first three sections — BlueKloud Identifier `0x01F0`, Company Identifier and Beacon Identifier — are required and of a fixed byte position and length. The fourth section — the Option Bytes — is optional, of variable length and consists of one or more Key-Value pairs representing specific service data, each separated by a Stop Byte.
+
 
 ![packet_format]
 
 ----
 
 # Primary advertising packet
-The Primary Advertising Packet or PAP hold the most critical information, allowing you to identify the company the beacon is from and the beacon itself. This packet is a total of 12 bytes starting with the first two bytes as the specification identification `0x01F0`. The company identification follows that and should be obtained from the [Bluetooth Special Interest Group (Bluetooth SIG)](https://www.bluetooth.org/en-us/specification/assigned-numbers/company-identifiers). They will provide you with a two byte long company identification that can be used in most every other specification. After the company ID, comes the beacon ID which is an eight bytes long and should increment starting from zero per company ID.
+The Primary Advertising Packet or PAP hold the most critical information, allowing you to identify the company/customer the beacon is from and the beacon itself. This packet is a total of twelve bytes starting with the first two bytes as the BlueKloud Identifier. This allows for quick identification of ThinAër beacons without having to parse the remainder of the primary advertising paacket.  The next two bytes are the company/customer ID.   The company ID should be obtained from the [Bluetooth Special Interest Group (Bluetooth SIG)](https://www.bluetooth.org/en-us/specification/assigned-numbers/company-identifiers). They will provide you with a two byte long company identification that can be used in most every other specification. After the company ID, comes the beacon ID which is an eight bytes long and should increment starting from zero per company ID.
+
 
 #### Example
 The example below will show our test company building two beacons using the company ID then the beacon ID incremented.
@@ -31,7 +33,7 @@ Beacon | Format
 
 
 # Option Bytes
-ThinAër’s option bytes have been modeled after the Key-Value Store concept common to many modern software programming languages. Option bytes are predefined in this specification, allowing for quick identification on the peripheral side. The first option (or the key) byte defines what the data will be, using a standard hex value from 0 to F. After the initial byte the data will follow using as many bytes as needed (the value). A stop byte is used at the end of the data letting the peripheral know all data of this type has been sent. More keys and values may be sent until the advertising package limit is reached on the specific chipset.
+ThinAër’s option bytes have been modeled after the Key-Value Store concept common to many modern software programming languages. Option bytes are predefined in this specification, allowing for quick identification on the peripheral side. The first option (or the key) byte defines what the data will be, using a standard hex value from 0x00 to 0xFE. After the initial byte the data will follow using as many bytes as needed (the value). A stop byte is used at the end of the data letting the peripheral know all data of this type has been sent. More keys and values may be sent until the advertising package limit is reached on the specific chipset.
 
 
 ThinAër’s option bytes are an extremely easy to use and flexible option to the specification for sending data over the advertising package. Options can be in any order and can change positions within the options data set itself. Option bytes are predefined in this specification and can be added with a request to the authors.
@@ -75,6 +77,7 @@ Beacon | Format
 --- | ---
 1 | `0x01F0, 0x1234, [8 byte beacon ID], 0x02, 0x4A, 0xFF, 0x05, 0x00, 0xFF`
 2 | `0x01F0, 0x1234, [8 byte beacon ID], 0x05, 0x01, 0xFF, 0x02, 0x4A, 0xFF`
+
 
 
 [logo_banner]: https://raw.githubusercontent.com/Kloudnation/thinaer/master/images/ThinAer-banner725wide.png "logo_banner"
